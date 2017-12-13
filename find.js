@@ -22,11 +22,14 @@ var findIt = function(e) {
     //console.log(e.screenX);
     //console.log(e.screenY);
     //console.log(distance(targetX,targetY,e.screenX,e.screenY));
-    var dist = distance(targetX,targetY,e.screenX,e.screenY);
-    var shade = 255 - (Math.floor(dist / 256) * 100);
+    var dist = distance(targetX,targetY,e.clientX,e.clientY);
+    var shade = 256 - (Math.floor(dist / 256 * 100));
     console.log("dist:" + dist);
     console.log(shade);
-    box.style.backgroundColor = "rgb("+shade+","+shade+","+shade+")";
+    box.style.backgroundColor = "rgb("+shade+","+shade+",255)";
+    if (dist < 10){
+	box.style.backgroundColor= "black";
+    }
 };
 
 /*

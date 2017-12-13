@@ -4,8 +4,8 @@ var boxWidth = box.offsetWidth;
 
 //hardcode target as center
 //randomize later
-var targetX = boxWidth / 2;
-var targetY = boxHeight / 2;
+var targetX = Math.floor(Math.random() * boxWidth);
+var targetY = Math.floor(Math.random() * boxHeight);
 
 
 console.log( "box height: " + boxHeight );
@@ -19,21 +19,15 @@ var distance = function (x0, y0, x1, y1) {
 
 var findIt = function(e) {
     //console.log(e);
-    //console.log(e.screenX);
-    //console.log(e.screenY);
-    //console.log(distance(targetX,targetY,e.screenX,e.screenY));
     var dist = distance(targetX,targetY,e.clientX,e.clientY);
     var shade = 256 - (Math.floor(dist / 256 * 100));
     console.log("dist:" + dist);
     console.log(shade);
     box.style.backgroundColor = "rgb("+shade+","+shade+",255)";
-    if (dist < 10){
+    //if target found
+    if (dist < 15){
 	box.style.backgroundColor= "black";
     }
 };
 
-/*
-your OTHER FXNS
-
-*/
 box.addEventListener("mousemove", findIt);

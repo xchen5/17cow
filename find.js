@@ -18,7 +18,15 @@ var distance = function (x0, y0, x1, y1) {
 
 
 var findIt = function(e) {
-    console.log(e)
+    //console.log(e);
+    //console.log(e.screenX);
+    //console.log(e.screenY);
+    //console.log(distance(targetX,targetY,e.screenX,e.screenY));
+    var dist = distance(targetX,targetY,e.screenX,e.screenY);
+    var shade = Math.floor(dist / 256 * 100);
+    console.log("dist:" + dist);
+    console.log(shade);
+    box.style.backgroundColor = "rgb("+shade+","+shade+","+shade+")";
 };
 
 /*
